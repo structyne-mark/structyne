@@ -1,10 +1,5 @@
 import { Component, OnInit, inject, DestroyRef, signal } from '@angular/core';
 
-interface TermLine {
-  text: string;
-  type: 'prompt' | 'blank' | 'info' | 'read' | 'write' | 'done';
-}
-
 @Component({
   selector: 'app-home',
   standalone: true,

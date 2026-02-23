@@ -6,7 +6,10 @@ export default [
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
-  sonarjs.configs.recommended,
+  {
+    ...sonarjs.configs.recommended,
+    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx', '**/*.mjs', '**/*.cjs'],
+  },
   {
     ignores: ['**/dist', '**/out-tsc'],
   },
@@ -39,8 +42,15 @@ export default [
       '**/*.cjs',
       '**/*.mjs',
     ],
-    // Override or add rules here
-    rules: {},
+    rules: {
+      'sonarjs/pseudo-random': 'off',
+    },
+  },
+  {
+    files: ['**/gtag-init.js'],
+    rules: {
+      'prefer-rest-params': 'off',
+    },
   },
   // Must be last — disables rules that conflict with Prettier formatting
   prettier,
