@@ -41,7 +41,7 @@ Everything runs on a single t4g.nano EC2 instance (~$3/month). Cloudflare Tunnel
 ```bash
 cd infra
 terraform init
-terraform apply \
+AWS_PROFILE=your-profile terraform apply \
   -var="github_username=YOUR_GITHUB_USER" \
   -var="github_pat=YOUR_GITHUB_PAT"
 ```
