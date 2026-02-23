@@ -1,0 +1,31 @@
+<!-- Nav -->
+<header>
+  <nav class="nav-bar" aria-label="Main navigation">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a routerLink="/" class="logo">Structyne</a>
+      <a href="mailto:hello@structyne.com" class="nav-cta">Contact us</a>
+    </div>
+  </nav>
+</header>
+
+<!-- Privacy -->
+<section class="legal" aria-label="Privacy Policy">
+  <div class="container">
+    <p class="legal-label">Legal</p>
+    <h1 class="legal-title">Privacy Policy</h1>
+    <p class="legal-effective">Effective {{ effectiveDate }}</p>
+
+    <div class="legal-body" [innerHTML]="body"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container d-flex justify-content-between align-items-center">
+    <span>&copy; Structyne</span>
+    <div class="footer-links">
+      <a routerLink="/privacy">Privacy</a>
+      <a routerLink="/terms">Terms</a>
+    </div>
+  </div>
+</footer>

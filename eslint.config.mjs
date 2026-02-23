@@ -1,9 +1,12 @@
 import nx from '@nx/eslint-plugin';
+import sonarjs from 'eslint-plugin-sonarjs';
+import prettier from 'eslint-config-prettier';
 
 export default [
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
+  sonarjs.configs.recommended,
   {
     ignores: ['**/dist', '**/out-tsc'],
   },
@@ -39,4 +42,6 @@ export default [
     // Override or add rules here
     rules: {},
   },
+  // Must be last — disables rules that conflict with Prettier formatting
+  prettier,
 ];

@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'bootstrap/scss/bootstrap' with (
+  $body-bg: #09090b,
+  $body-color: #e4e4e7,
+  $font-family-sans-serif: ('Outfit', sans-serif),
+  $primary: #c8a45e,
+  $dark: #09090b,
+  $border-radius: 2px
+);
+
+:root {
+  --sty-bg: #09090b;
+  --sty-surface: #18181b;
+  --sty-amber: #c8a45e;
+  --sty-text: #e4e4e7;
+  --sty-muted: #8a8a93;
+  --sty-border: #27272a;
+  --sty-font: 'Outfit', sans-serif;
+  --sty-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-weight: 300;
+}
+
+::selection {
+  background: var(--sty-amber);
+  color: var(--sty-bg);
+}
+
+a {
+  color: var(--sty-amber);
+  text-decoration: none;
+  &:hover { color: #dbb96e; }
+}

@@ -1,0 +1,125 @@
+// Nav (shared with home)
+.nav-bar {
+  padding: 1.5rem 0;
+
+  .logo {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--sty-text);
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    &:hover { color: var(--sty-text); }
+  }
+
+  .nav-cta {
+    font-size: 0.8rem;
+    font-family: var(--sty-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sty-muted);
+    text-decoration: none;
+    &:hover { color: var(--sty-amber); }
+  }
+}
+
+// Legal content
+.legal {
+  padding: 6rem 0 4rem;
+  max-width: 720px;
+  margin: 0 auto;
+
+  .legal-label {
+    font-family: var(--sty-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sty-amber);
+    margin-bottom: 1rem;
+  }
+
+  .legal-title {
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-effective {
+    font-size: 0.85rem;
+    color: var(--sty-muted);
+    margin-bottom: 3rem;
+  }
+}
+
+.legal-body {
+  h2, h3 {
+    font-weight: 400;
+    font-size: 1.15rem;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--sty-text);
+  }
+
+  h4 {
+    font-weight: 400;
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--sty-text);
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--sty-border);
+    margin: 2rem 0;
+  }
+
+  p {
+    color: var(--sty-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    color: var(--sty-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+  }
+
+  strong {
+    color: var(--sty-text);
+    font-weight: 500;
+  }
+
+  a {
+    color: var(--sty-amber);
+    text-decoration: none;
+    &:hover { opacity: 0.7; }
+  }
+}
+
+// Footer
+.site-footer {
+  border-top: 1px solid var(--sty-border);
+  padding: 2rem 0;
+  font-size: 0.8rem;
+  color: var(--sty-muted);
+
+  a {
+    color: var(--sty-muted);
+    text-decoration: none;
+    &:hover { color: var(--sty-amber); }
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+}
