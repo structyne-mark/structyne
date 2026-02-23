@@ -1,8 +1,15 @@
+@use 'sass:color';
+
+// ─────────────────────────────────────────────
+// ACCENT COLOR — change this one value only
+$accent: #34d399;
+// ─────────────────────────────────────────────
+
 @use 'bootstrap/scss/bootstrap' with (
   $body-bg: #09090b,
   $body-color: #e4e4e7,
   $font-family-sans-serif: ('Outfit', sans-serif),
-  $primary: #c8a45e,
+  $primary: $accent,
   $dark: #09090b,
   $border-radius: 2px
 );
@@ -10,7 +17,8 @@
 :root {
   --sty-bg: #09090b;
   --sty-surface: #18181b;
-  --sty-amber: #c8a45e;
+  --sty-accent: #{$accent};
+  --sty-accent-hover: #{color.adjust($accent, $lightness: 10%)};
   --sty-text: #e4e4e7;
   --sty-muted: #8a8a93;
   --sty-border: #27272a;
@@ -32,12 +40,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background: var(--sty-amber);
+  background: var(--sty-accent);
   color: var(--sty-bg);
 }
 
 a {
-  color: var(--sty-amber);
+  color: var(--sty-accent);
   text-decoration: none;
-  &:hover { color: #dbb96e; }
+  &:hover { color: var(--sty-accent-hover); }
 }
