@@ -1,5 +1,4 @@
 import { Component, OnInit, inject, DestroyRef, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 interface TermLine {
   text: string;
@@ -9,7 +8,7 @@ interface TermLine {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
