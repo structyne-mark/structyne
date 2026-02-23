@@ -1,4 +1,4 @@
-import { Component, inject, ElementRef } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SeoService } from './seo.service';
 import { APP_VERSION } from './app-version';
