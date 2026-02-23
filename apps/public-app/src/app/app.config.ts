@@ -8,11 +8,13 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
+import { APP_VERSION } from './app-version';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
     provideBrowserGlobalErrorListeners(),
     provideRouter(appRoutes),
+    { provide: APP_VERSION, useValue: 'dev' },
   ],
 };

@@ -15,8 +15,10 @@ FROM node:22-alpine AS runner
 
 WORKDIR /app
 
+ARG APP_VERSION=dev
 ENV NODE_ENV=production
 ENV PORT=4000
+ENV APP_VERSION=$APP_VERSION
 
 COPY --from=builder /app/dist/apps/public-app ./dist
 
