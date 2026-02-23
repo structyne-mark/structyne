@@ -1,0 +1,18 @@
+<div class="terminal" aria-hidden="true">
+  <div class="terminal-bar">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="terminal-title">claude</span>
+  </div>
+  <div class="terminal-body">
+    @for (line of termLines(); track $index) {
+      <div [class]="'term-line ' + line.type">{{ line.text }}</div>
+    }
+    @if (termTyping()) {
+      <div class="term-thinking">
+        <span></span><span></span><span></span>
+      </div>
+    }
+  </div>
+</div>
