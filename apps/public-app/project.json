@@ -18,6 +18,10 @@
           {
             "glob": "**/*",
             "input": "apps/public-app/public"
+          },
+          {
+            "glob": "gtag-init.js",
+            "input": "apps/public-app/src"
           }
         ],
         "styles": ["apps/public-app/src/styles.scss"],
