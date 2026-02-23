@@ -1,0 +1,17 @@
+.site-footer {
+  border-top: 1px solid var(--sty-border);
+  padding: 2rem 0;
+  font-size: 0.8rem;
+  color: var(--sty-muted);
+
+  a {
+    color: var(--sty-muted);
+    text-decoration: none;
+    &:hover { color: var(--sty-accent); }
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+}
