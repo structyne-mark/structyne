@@ -1,101 +1,67 @@
 # Structyne
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+SaaS product studio. This monorepo contains the public marketing site and supporting infrastructure.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+## Tech stack
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+- **Framework:** Angular 21 with SSR (server-side rendering)
+- **Server:** Express
+- **Monorepo:** Nx
+- **Styling:** Bootstrap 5 + ng-bootstrap
+- **Testing:** Vitest (unit), Playwright (e2e)
+- **CI/CD:** GitHub Actions → Docker → EC2 via Cloudflare Tunnel
+- **Infra:** Terraform, Docker Compose
 
-## Run tasks
+## Repo structure
 
-To run the dev server for your app, use:
-
-```sh
-npx nx serve public-app
+```
+apps/
+  public-app/        # Marketing site (Angular SSR + Express)
+  public-app-e2e/    # Playwright end-to-end tests
+infra/               # Terraform config, Docker Compose, EC2 setup
+scripts/             # Release and utility scripts
 ```
 
-To create a production bundle:
+## Getting started
+
+**Prerequisites:** Node.js 22, npm
 
 ```sh
-npx nx build public-app
+npm install
+npx playwright install --with-deps   # for e2e tests
 ```
 
-To see all available targets to run for a project, run:
+Start the dev server:
 
 ```sh
-npx nx show project public-app
+npm start
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+The app will be available at `http://localhost:4200`.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Available commands
 
-## Add new projects
+| Command | Description |
+| --- | --- |
+| `npx nx serve public-app` | Dev server with hot reload |
+| `npx nx build public-app` | Production build |
+| `npx nx test public-app` | Unit tests (Vitest) |
+| `npx nx lint public-app` | Lint (ESLint) |
+| `npx nx e2e public-app-e2e` | End-to-end tests (Playwright) |
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+## Deployment
 
-Use the plugin's generator to create new projects.
+Deployments are triggered by GitHub releases:
 
-To generate a new application, use:
+1. `npm run release` creates a timestamped GitHub release (e.g. `v2026.02.23-143012`)
+2. The **publish-public-app** workflow builds a multi-arch Docker image and pushes it to GHCR
+3. The **deploy** job SSHs into EC2 and pulls the new image via `docker compose`
+4. Traffic is routed through a Cloudflare Tunnel
+
+## Release process
 
 ```sh
-npx nx g @nx/angular:app demo
+npm run release
 ```
 
-To generate a new library, use:
-
-```sh
-npx nx g @nx/angular:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+This runs `scripts/release.sh`, which creates a GitHub release using the `gh` CLI. The release tag triggers the deploy workflow automatically.
