@@ -4,15 +4,12 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
-import {
-  provideClientHydration,
-  withEventReplay,
-} from '@angular/platform-browser';
+import { provideClientHydration } from '@angular/platform-browser';
 import { APP_VERSION } from './app-version';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideClientHydration(withEventReplay()),
+    provideClientHydration(),
     provideBrowserGlobalErrorListeners(),
     provideRouter(appRoutes),
     { provide: APP_VERSION, useValue: 'dev' },
