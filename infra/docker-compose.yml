@@ -1,0 +1,19 @@
+services:
+  public-app:
+    image: ghcr.io/structyne-mark/structyne/public-app:latest
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: always
+    command: tunnel run --token ${TUNNEL_TOKEN}
+    depends_on:
+      - public-app
+    deploy:
+      resources:
+        limits:
+          memory: 64M
