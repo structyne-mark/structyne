@@ -46,3 +46,8 @@ Thumbs.db
 __screenshots__/
 
 error.log
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
